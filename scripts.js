@@ -1,14 +1,18 @@
 let url = "https://api.disneyapi.dev/characters"
-
 $(document).ready(function () {
+    // $(".Game").hide();
+
     $("#starter").click(function () {
-        $(".Game").hide(1000);
+        $(".Game").show(1000);
     });
     $("#addImgs").click(function () {
         $.getJSON(url, function (data) {
-            let characters = data.data;
-            let para = $("p");
+            let characters = data;
+            let para = $("#para");
             para.append(characters);
         });
     });
+
 });
+
+//https://theonlineadvertisingguide.com/wp-content/uploads/2013/08/125x125.jpg
