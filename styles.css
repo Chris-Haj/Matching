@@ -1,26 +1,38 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --ImgSize: 800px;
+}
+
 body {
-    background-color: ghostwhite;
+    padding-top:15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #42055e;
+    height: 1000px;
+    overflow: hidden;
 }
 
 #name {
+    background-color: #4e0288;
+    color: #bfc2ff;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
+    padding: 15px;
+}
+
+.Game{
+    display: none;
 }
 
 .Start {
-    padding: 10px 10px 90px 10px;
+    padding: 10px 10px 20px 10px;
     width: 99%;
     display: flex;
     flex-direction: row;
@@ -33,7 +45,9 @@ body {
     font-style: italic;
     font-weight: bold;
     width: 50%;
-    background-color: white;
+    background-color: #4e0288;
+    color: #e1e2f3;
+    border-radius: 10px;
     border: 4px solid black;
     margin: 10px;
 }
@@ -49,49 +63,72 @@ make Start button black when clicked*/
     color: white;
 }
 
-.Game {
+.Stats {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
-
-ul {
-    list-style-type: none;
-}
-
-.card .front-view.back-view img {
-    width: 80px;
-    height: 80px;
-}
-img{
-    height: 80px;
-}
-
-
-#wrapper {
-    height: 800px;
-    width: 800px;
-    background: indigo;
-    border-radius: 10px;
-}
-
-.cards {
     height: 100%;
-    width: 100% ;
-    flex-wrap: wrap;
-}
-.cards .card {
-    height: calc(100% / 4 - 10px);
-    width: calc(100% / 5 - 10px);
+    margin-left: 30%;
 }
 
-.card .front-view{
-    display: none;
+.AllCards {
+    padding: 5px;
+    margin: 30px;
+    list-style-type: none;
+    width: calc(5 * 8 + 70 * 4px);
+    height: calc(4 * 8 + 7 * 5px);
+    background-color: black;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+
 }
 
-.cards .card .visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.OneCard {
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgb(154, 14, 147);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding-top: 20%;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+
+}
+
+.OneCard .Front {
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+
+.OneCard .Back {
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+}
+
+.OneCard.flipped .Front {
+    transform: rotateY(180deg);
+}
+
+.OneCard.flipped .Back {
+    transform: rotateY(0deg);
+}
+
+img {
+    width: 60%;
+    height: 60%;
+}
+
+li {
+    cursor: pointer;
+}
+
+li > * {
+    pointer-events: none;
 }
