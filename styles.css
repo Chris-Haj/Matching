@@ -129,33 +129,35 @@ li {
 li > * {
     pointer-events: none;
 }
-
-.Wrong{
-    display: flex;
+.Wrong, .Right{
+    display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    left: 30px;
     background-color: #b300ff;
     font-size: 200%;
     height: 73%;
     width: 25%;
     position: absolute;
     z-index: 1;
-    border-radius:5px;
+    border-radius:25px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.Wrong{
     box-shadow: 5px 5px 5px black;
 }
-.Wrong button{
+.Right{
+    box-shadow: -5px 5px 5px black;
+}
+.Wrong button, .Right button{
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
     width: inherit;
     font-size: large;
-}
-.Right{
-    right: 30px;
-    background-color: #b300ff;
-    height: 73%;
-    width: 25%;
-    position: absolute;
-    z-index: 1;
+    font-weight: bold;
+    border-radius: 20px;
+    border: black 4px solid;
 }
