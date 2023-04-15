@@ -129,3 +129,33 @@ li {
 li > * {
     pointer-events: none;
 }
+
+.Wrong{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    left: 30px;
+    background-color: #b300ff;
+    font-size: 200%;
+    height: 73%;
+    width: 25%;
+    position: absolute;
+    z-index: 1;
+    border-radius:5px;
+    box-shadow: 5px 5px 5px black;
+}
+.Wrong button{
+    padding: 10px;
+    margin: 10px;
+    width: inherit;
+    font-size: large;
+}
+.Right{
+    right: 30px;
+    background-color: #b300ff;
+    height: 73%;
+    width: 25%;
+    position: absolute;
+    z-index: 1;
+}

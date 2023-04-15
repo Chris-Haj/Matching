@@ -12,6 +12,9 @@ $(document).ready(function () {
         $("#addImgs").show(1000);
         $("#starter").hide(1000);
     });
+    $(".Wrong button").click(function(){
+        $(".Wrong").hide()
+    })
     $('.OneCard').on('click', function () {
             //OneCard can only be clicked if it is not already flipped
             if (!$(this).hasClass('flipped')) {
