@@ -15,7 +15,6 @@ body {
     align-items: center;
     background-color: #42055e;
     height: 1000px;
-    overflow: hidden;
 }
 
 #name {
@@ -76,14 +75,13 @@ make Start button black when clicked*/
     padding: 5px;
     margin: 30px;
     list-style-type: none;
-    width: calc(5 * 8 + 70 * 4px);
+    width: calc(5 * 8 + 7 * 4px);
     height: calc(4 * 8 + 7 * 5px);
     background-color: black;
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
-
 }
 
 .OneCard {
@@ -93,8 +91,8 @@ make Start button black when clicked*/
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding-top: 20%;
     text-align: center;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     perspective: 1000px;
 
 }
@@ -122,7 +120,6 @@ make Start button black when clicked*/
 
 img {
     width: 60%;
-    height: 60%;
 }
 
 li {

@@ -1,35 +1,49 @@
 // Define the base URL and the current page number
 let url = "https://api.disneyapi.dev/characters?page="
 let page = "1"
+let id = '_id';
+let moves = 0;
+let cards = [];
 $(document).ready(function () {
     $("#addImgs").hide();
-
+    $(".Game").show();
     $("#starter").click(function () {
         $(".Game").show(1000);
         $("#addImgs").show(1000);
         $("#starter").hide(1000);
     });
-    $("#addImgs").click(function () {
-        $.getJSON(url, function (data) {
-            let characters = data;
-            let para = $("#para");
-            para.append(characters);
-        });
-    });
+    $('.OneCard').on('click', function () {
+            //OneCard can only be clicked if it is not already flipped
+            if (!$(this).hasClass('flipped')) {
+                cards.push($(this));
+                if (cards.length === 2) {
+                    if (cards[0] === cards[1]) {
+                        cards = [];
+
+                    }
+                    else {
+                        cards[0].toggleClass('flipped');
+                        cards[1].toggleClass('flipped');
+                    }
+                }
+                console.log(cards);
+                $(this).toggleClass('flipped');
+            }
+        }
+    )
+    ;
     let disney = extractData();
     let chars = disney[0];
-    console.log(chars);
 
 });
 
 function extractData() {
     let data = []
-    console.log(typeof (data));
     $.ajax({
         url: url + page,
         type: 'GET',
         datatype: 'json',
-        async:false,
+        async: false,
         success: function (json) {
             for (let i in json) {
                 data.push(json[i]);
