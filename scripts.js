@@ -2,8 +2,19 @@
 let url = "https://api.disneyapi.dev/characters?page="
 let page = "1"
 let id = '_id';
+let films = 'films';
+let shortFilms = 'shortFilms';
+let tvShows = 'tvShows';
+let videoGames = 'videoGames';
+let parkAttract = 'parkAttractions';
+let allies = 'allies';
+let enemies = 'enemies';
+let name = 'name';
+let image = 'imageUrl';
+
 let moves = 0;
-let cards = [];
+let Card1 = null;
+let Card2 = null;
 $(document).ready(function () {
     $("#addImgs").hide();
     $(".Game").show();
@@ -12,33 +23,73 @@ $(document).ready(function () {
         $("#addImgs").show(1000);
         $("#starter").hide(1000);
     });
-    $(".Wrong button").click(function(){
+    $(".Wrong button").click(function () {
         $(".Wrong").hide()
-    })
+    });
+    let disney = extractData();
+    let chars = disney[0];
+    //create array with random numbers from 0 to chars length
+    let random = randomNumbers(chars);
+    console.log(random);
+    for (let i = 0; i < 20; i++) {
+        let char = chars[random[i]];
+        let img = char[image];
+        let name = char.name;
+        let id = char._id;
+        let card = `<li class="OneCard">
+                             <div class="Front visual">
+                                <img alt="QuestionMark"
+                                     src=https://github.com/Chris-Haj/MatchingCardsGame/blob/master/Images/question-mark.png?raw=true>
+                              </div>
+                            
+                            <div class="Back visual" id="${id}">
+                                <img id="${id}" src="${img}" alt="${name}">
+                            </div>
+ 
+                    </li>`;
+        $(".AllCards").append(card);
+    }
+    addFlip();
+
+
+});
+
+function addFlip(){
     $('.OneCard').on('click', function () {
             //OneCard can only be clicked if it is not already flipped
             if (!$(this).hasClass('flipped')) {
-                cards.push($(this));
-                if (cards.length === 2) {
-                    if (cards[0] === cards[1]) {
-                        cards = [];
-
-                    }
-                    else {
-                        cards[0].toggleClass('flipped');
-                        cards[1].toggleClass('flipped');
-                    }
+                //If Card1 is null, then this is the first card to be flipped
+                if (Card1 === null) {
+                    Card1 = $(this);
+                    $(this).toggleClass('flipped');
                 }
-                console.log(cards);
+                //If Card1 is not null, then this is the second card to be flipped
+                else {
+                    //If Card1 is not null, then Card2 must be null
+                    Card2 = $(this);
+                    $(this).toggleClass('flipped');
+                }
                 $(this).toggleClass('flipped');
             }
         }
-    )
-    ;
-    let disney = extractData();
-    let chars = disney[0];
+    );
+}
+function randomNumbers(chars) {
+    let arr = [];
+    while (arr.length < 10) {
+        const randomNum = Math.floor(Math.random() * chars.length);
+        if (!arr.includes(randomNum)) {
+            arr.push(randomNum);
+        }
+    }
+    arr = arr.concat(arr);
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
 
-});
 
 function extractData() {
     let data = []
